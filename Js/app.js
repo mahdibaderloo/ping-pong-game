@@ -15,3 +15,11 @@ class User {
         
     }   
 }
+
+
+// Window //
+
+window.addEventListener('load', () => {
+    let user = new User ()
+    user.userGamepad()
+})
