@@ -17,9 +17,24 @@ class User {
 }
 
 
+// System Class //
+
+class System {
+    constructor () {
+
+    }
+
+    systemGamepad () {
+        ctx.fillRect(125, 0, 100, 10)
+    }
+}
+
 // Window //
 
 window.addEventListener('load', () => {
     let user = new User ()
+    let system = new System ()
+
     user.userGamepad()
+    system.systemGamepad()
 })
