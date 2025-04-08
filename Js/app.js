@@ -17,6 +17,11 @@ class User {
     this.x -= 5;
     this.userGamepad();
   }
+
+  moveRight() {
+    this.x += 5;
+    this.userGamepad();
+  }
 }
 
 // System Class //
