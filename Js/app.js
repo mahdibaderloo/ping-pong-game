@@ -30,6 +30,14 @@ class System {
     this.x += 5;
     ctx.fillRect(this.x, 0, 100, 10);
   }
+
+  moveLeft() {
+    for (let i = canvas.width - 100; i <= 0; i--) {
+      ctx.fillRect(this.x, 0, 100, 0);
+    }
+    this.x -= 5;
+    ctx.fillRect(this.x, 0, 100, 10);
+  }
 }
 
 // Window //
