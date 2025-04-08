@@ -14,7 +14,7 @@ class User {
   }
 
   moveLeft() {
-    this.x -= 5;
+    this.x -= 10;
     this.userGamepad();
   }
 
@@ -59,4 +59,18 @@ window.addEventListener("load", () => {
     ctx.clearRect(0, 0, canvas.width, 100);
     system.move();
   }, 30);
+});
+
+window.addEventListener("keydown", (e) => {
+  keyPress = e.key.replace("Arrow", "");
+
+  switch (keyPress) {
+    case "Left":
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      user.moveLeft();
+    case "Right":
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      user.moveRight();
+    default:
+  }
 });
