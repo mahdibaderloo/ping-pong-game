@@ -14,12 +14,16 @@ class User {
   }
 
   moveLeft() {
-    this.x -= 10;
+    if (this.x > 0) {
+      this.x -= 5;
+    }
     this.userGamepad();
   }
 
   moveRight() {
-    this.x += 5;
+    if (this.x < canvas.width - 100) {
+      this.x += 5;
+    }
     this.userGamepad();
   }
 }
@@ -66,11 +70,14 @@ window.addEventListener("keydown", (e) => {
 
   switch (keyPress) {
     case "Left":
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, canvas.height - 10, canvas.width, 10);
       user.moveLeft();
+      break;
     case "Right":
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, canvas.height - 10, canvas.width, 10);
       user.moveRight();
-    default:
+      break;
   }
+
+  system.systemGamepad();
 });
