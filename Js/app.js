@@ -17,25 +17,20 @@ class User {
 class System {
   constructor() {
     this.x = 0;
+    this.direction = 1;
   }
 
   systemGamepad() {
     ctx.fillRect(this.x, 0, 100, 10);
   }
 
-  moveRight() {
-    for (let i = 0; i < canvas.width - 100; i++) {
-      ctx.fillRect(this.x, 0, 100, 0);
-    }
-    this.x += 5;
-    ctx.fillRect(this.x, 0, 100, 10);
-  }
+  move() {
+    this.x = this.x + 5 * this.direction;
 
-  moveLeft() {
-    for (let i = canvas.width - 100; i <= 0; i--) {
-      ctx.fillRect(this.x, 0, 100, 0);
+    if (this.x >= canvas.width - 100 || this.x <= 0) {
+      this.direction *= -1;
     }
-    this.x -= 5;
+
     ctx.fillRect(this.x, 0, 100, 10);
   }
 }
@@ -48,4 +43,8 @@ window.addEventListener("load", () => {
 
   user.userGamepad();
   system.systemGamepad();
+  setInterval(() => {
+    ctx.clearRect(0, 0, canvas.width, 100);
+    system.move();
+  }, 30);
 });
