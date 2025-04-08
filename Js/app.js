@@ -51,16 +51,38 @@ class System {
   }
 }
 
+// Ball Class //
+
+class Ball {
+  constructor() {
+    this.x = canvas.width / 2;
+    this.y = canvas.height / 2;
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, 10, 0, 2 * Math.PI);
+    ctx.fillStyle = "tomato";
+    ctx.fill();
+    ctx.closePath();
+  }
+}
+
 // Window //
 
 let user = new User();
 let system = new System();
+let ball = new Ball();
 
 window.addEventListener("load", () => {
   user.userGamepad();
+
   system.systemGamepad();
+  ball.draw();
+
   setInterval(() => {
-    ctx.clearRect(0, 0, canvas.width, 100);
+    ctx.clearRect(0, 0, canvas.width, 10);
+    ctx.fillStyle = "black";
     system.move();
   }, 30);
 });
