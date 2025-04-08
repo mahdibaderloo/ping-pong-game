@@ -5,10 +5,17 @@ let ctx = canvas.getContext("2d");
 
 // User Class //
 class User {
-  constructor() {}
+  constructor() {
+    this.x = 125;
+  }
 
   userGamepad() {
-    ctx.fillRect(125, canvas.height - 10, 100, 10);
+    ctx.fillRect(this.x, canvas.height - 10, 100, 10);
+  }
+
+  moveLeft() {
+    this.x -= 5;
+    this.userGamepad();
   }
 }
 
@@ -37,10 +44,10 @@ class System {
 
 // Window //
 
-window.addEventListener("load", () => {
-  let user = new User();
-  let system = new System();
+let user = new User();
+let system = new System();
 
+window.addEventListener("load", () => {
   user.userGamepad();
   system.systemGamepad();
   setInterval(() => {
